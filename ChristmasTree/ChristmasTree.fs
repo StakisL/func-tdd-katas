@@ -12,4 +12,10 @@ type ChristmasTree(heightIn : int, widthIn : int) as self =
         for i in 0 .. christmasTree.Length - 1 do
             Array.set christmasTree i true
         christmasTree
+        
+    member this.TurnOnFirstRow =
+        let rowLenght = christmasTree.GetLength 0
+        for i in 0 .. rowLenght - 1 do
+            Array.set christmasTree i true
+        christmasTree
                         

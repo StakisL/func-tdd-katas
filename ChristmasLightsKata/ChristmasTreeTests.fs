@@ -25,7 +25,7 @@ type ChristmasTreeTests() =
         
         //assert
         for i in 0 .. turnedOnTree.Length - 1 do
-            Assert.IsTrue(turnedOnTree.[i] = true)
+            Assert.IsTrue(turnedOnTree.[i])
             
     [<Test>]
     member this.ChristmasTree_ShouldTurnOnFirstRowOnTree () =
@@ -36,8 +36,13 @@ type ChristmasTreeTests() =
         let result = christmasTree.TurnOnFirstRow
         
         //assert
-        for i in 0 .. 999 do
-            Assert.IsTrue(result.[i] = true)
+        let rowLenght = result.GetLength 0
+        
+        for i in 0 .. rowLenght - 1 do
+            Assert.IsTrue(result.[i])
+            
+        for i in rowLenght .. result.Length - 1 do
+            Assert.IsFalse(result.[i])
         
     //todo for next kata time
     //make special type for tree
