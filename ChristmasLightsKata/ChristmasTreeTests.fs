@@ -8,12 +8,21 @@ type ChristmasTreeTests() =
   
     [<Test>]
     member this.ChristmasTree_ShouldCreateDisabledChristmasTree () =
+        //arrange
         let christmasTree = ChristmasTree(1000,1000)
+        
+        //act & assert
         Assert.IsTrue(christmasTree.IsLightsOff)
 
     [<Test>]
     member this.ChristmasTree_ShouldTurnOnEveryLightOnTree () =
+        //arrange
         let christmasTree = ChristmasTree(1000,1000)
+        Assert.IsTrue(christmasTree.IsLightsOff)
+        
+        //act
         let turnedOnTree = christmasTree.TurnOnAll
+        
+        //assert
         for i in 0 .. turnedOnTree.Length - 1 do
             Assert.IsTrue(turnedOnTree.[i] = true)
