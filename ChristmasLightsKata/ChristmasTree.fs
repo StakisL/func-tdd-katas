@@ -8,14 +8,15 @@ type ChristmasTree(heightIn : int, widthIn : int) as self =
     
     member this.IsLightsOff = christmasTree |> Array.exists (fun i -> i  = false)
 
+    member this.GetTree = christmasTree
+    
     member this.TurnOnAll =
         for i in 0 .. christmasTree.Length - 1 do
             Array.set christmasTree i true
         christmasTree
         
     member this.TurnOnFirstRow =
-        let rowLenght = christmasTree.GetLength 0
-        for i in 0 .. rowLenght - 1 do
+        for i in 0 .. width - 1 do
             Array.set christmasTree i true
         christmasTree
                         

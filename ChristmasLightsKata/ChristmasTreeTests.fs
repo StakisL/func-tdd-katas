@@ -36,14 +36,32 @@ type ChristmasTreeTests() =
         let result = christmasTree.TurnOnFirstRow
         
         //assert
-        let rowLenght = result.GetLength 0
+        let rowLenght = 1000
         
         for i in 0 .. rowLenght - 1 do
             Assert.IsTrue(result.[i])
             
         for i in rowLenght .. result.Length - 1 do
             Assert.IsFalse(result.[i])
+
+    //todo add setup method
+    [<Test>]
+    member this.ChristmasTree_GetTree_ShouldReturnChristmasTree () =
+        //arrange
+        let christmasTree = ChristmasTree(1000,1000)
+
+        //act
+        let treeArray = christmasTree.GetTree
         
-    //todo for next kata time
-    //make special type for tree
-    //split tree type with functions
+        //assert
+        Assert.AreEqual(treeArray.Length, 1000000)
+       
+//    [<Test>]
+//    member this.ChristmasTree_ShouldTurnOffOnlyFourMiddleLights () =
+//        //arrange
+//        let christmasTree = ChristmasTree(1000,1000)
+//        
+//        //act
+//        
+//        
+//        //assert
