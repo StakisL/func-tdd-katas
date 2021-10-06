@@ -4,24 +4,26 @@ open NUnit.Framework
 open ChristmasTree
 
 [<TestFixture>]
-type ChristmasTreeTests() = 
-  
+type ChristmasTreeTests() =
+    
+    [<DefaultValue>] val mutable christmasTree : ChristmasTree
+    
+    [<SetUp>]
+    member this.Init () =
+        this.christmasTree <- ChristmasTree(1000,1000)
+        
     [<Test>]
     member this.ChristmasTree_ShouldCreateDisabledChristmasTree () =
-        //arrange
-        let christmasTree = ChristmasTree(1000,1000)
-        
         //act & assert
-        Assert.IsTrue(christmasTree.IsLightsOff)
+        Assert.IsTrue(this.christmasTree.IsLightsOff)
 
     [<Test>]
     member this.ChristmasTree_ShouldTurnOnEveryLightOnTree () =
         //arrange
-        let christmasTree = ChristmasTree(1000,1000)
-        Assert.IsTrue(christmasTree.IsLightsOff)
+        Assert.IsTrue(this.christmasTree.IsLightsOff)
         
         //act
-        let turnedOnTree = christmasTree.TurnOnAll
+        let turnedOnTree = this.christmasTree.TurnOnAll
         
         //assert
         for i in 0 .. turnedOnTree.Length - 1 do
@@ -30,31 +32,25 @@ type ChristmasTreeTests() =
     [<Test>]
     member this.ChristmasTree_ShouldTurnOnFirstRowOnTree () =
         //arrange
-        let christmasTree = ChristmasTree(1000,1000)
-        
+        let rowLenght = 1000
+
         //act
-        let result = christmasTree.TurnOnFirstRow
+        let result = this.christmasTree.TurnOnFirstRow
         
         //assert
-        let rowLenght = 1000
-        
         for i in 0 .. rowLenght - 1 do
             Assert.IsTrue(result.[i])
             
         for i in rowLenght .. result.Length - 1 do
             Assert.IsFalse(result.[i])
 
-    //todo add setup method
     [<Test>]
     member this.ChristmasTree_GetTree_ShouldReturnChristmasTree () =
-        //arrange
-        let christmasTree = ChristmasTree(1000,1000)
-
         //act
-        let treeArray = christmasTree.GetTree
+        let lights = this.christmasTree.GetTree
         
         //assert
-        Assert.AreEqual(treeArray.Length, 1000000)
+        Assert.AreEqual(lights.Length, 1000000)
        
 //    [<Test>]
 //    member this.ChristmasTree_ShouldTurnOffOnlyFourMiddleLights () =
