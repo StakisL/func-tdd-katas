@@ -6,8 +6,4 @@
         <WarnOn>3390;$(WarnOn)</WarnOn>
     </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="ChristmasTree.fs" />
-    </ItemGroup>
-
 </Project>

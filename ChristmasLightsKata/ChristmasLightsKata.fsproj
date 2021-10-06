@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="ChristmasTree.fs" />
         <Compile Include="ChristmasTreeTests.fs" />
     </ItemGroup>
 
