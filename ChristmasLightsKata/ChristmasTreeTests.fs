@@ -1,5 +1,6 @@
 module ChristmasLightsKata.UnitTest1
 
+open System
 open NUnit.Framework
 open ChristmasTree
 
@@ -55,20 +56,16 @@ type ChristmasTreeTests() =
         
         //assert
         Assert.AreEqual(lights.Length, 1000000)
-//       
-//    [<Test>]
-//    member this.ChristmasTree_ShouldTurnOffOnlyFourMiddleLights () =
-//        //arrange
-//        let firstPoint = (499, 499)
-//        let secondPoint = (500 ,500)
-//        
-//        //act
-//        let lights = this.christmasTree.TurnOnAtRange firstPoint, secondPoint
-//        
-//        //assert
-//        for i in 0 .. lights.Length do
-//            if (i >= 499 * width + 499 && i <= 499 * width + 500) ||
-//               (i >= 500 * width + 499 && i <= 500 * width + 500) then
-//                Assert.IsTrue(lights.[i])
-//            else
-//                Assert.IsFalse(lights.[i])
+       
+    [<Test>]
+    member this.ChristmasTree_ShouldTurnOffOnlyFourMiddleLights () =
+        //arrange & act
+        let lights = this.christmasTree.TurnOnAtRange (499, 499, 500, 500)
+         
+        for i in 0 .. lights.Length - 1 do
+            //I know that it can be written much better
+            if (i >= 499 * this.width + 499 && i <= 499 * this.width + 500) ||
+               (i >= 500 * this.width + 499 && i <= 500 * this.width + 500) then
+                Assert.IsTrue(lights.[i])
+            else
+                Assert.IsFalse(lights.[i])

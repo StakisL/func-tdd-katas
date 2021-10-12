@@ -21,5 +21,7 @@ type ChristmasTree(heightIn : int, widthIn : int) as self =
         christmasTree
                      
     member this.TurnOnAtRange (sourceRow, sourceColumn, destRow, destColumn) : bool[] =
-        
+        for i in sourceRow .. destRow do
+            for j in sourceColumn ..destColumn do
+                christmasTree.[i * width + j] <- true     
         christmasTree
