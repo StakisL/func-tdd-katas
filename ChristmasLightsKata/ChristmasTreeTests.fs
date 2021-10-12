@@ -7,10 +7,14 @@ open ChristmasTree
 type ChristmasTreeTests() =
     
     [<DefaultValue>] val mutable christmasTree : ChristmasTree
-    
+    [<DefaultValue>] val mutable width : int
+    [<DefaultValue>] val mutable height : int
+     
     [<SetUp>]
     member this.Init () =
-        this.christmasTree <- ChristmasTree(1000,1000)
+        this.width <- 1000
+        this.height <- 1000
+        this.christmasTree <- ChristmasTree(this.width, this.height)
         
     [<Test>]
     member this.ChristmasTree_ShouldCreateDisabledChristmasTree () =
@@ -51,13 +55,20 @@ type ChristmasTreeTests() =
         
         //assert
         Assert.AreEqual(lights.Length, 1000000)
-       
+//       
 //    [<Test>]
 //    member this.ChristmasTree_ShouldTurnOffOnlyFourMiddleLights () =
 //        //arrange
-//        let christmasTree = ChristmasTree(1000,1000)
+//        let firstPoint = (499, 499)
+//        let secondPoint = (500 ,500)
 //        
 //        //act
-//        
+//        let lights = this.christmasTree.TurnOnAtRange firstPoint, secondPoint
 //        
 //        //assert
+//        for i in 0 .. lights.Length do
+//            if (i >= 499 * width + 499 && i <= 499 * width + 500) ||
+//               (i >= 500 * width + 499 && i <= 500 * width + 500) then
+//                Assert.IsTrue(lights.[i])
+//            else
+//                Assert.IsFalse(lights.[i])

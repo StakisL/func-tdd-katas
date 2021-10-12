@@ -19,4 +19,7 @@ type ChristmasTree(heightIn : int, widthIn : int) as self =
         for i in 0 .. width - 1 do
             Array.set christmasTree i true
         christmasTree
-                        
+                     
+    member this.TurnOnAtRange (sourceRow, sourceColumn, destRow, destColumn) : bool[] =
+        
+        christmasTree
